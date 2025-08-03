@@ -1,0 +1,82 @@
+{
+    "name": "Sarah Chen",
+    "username": "sarahchen",
+    "title": "Full Stack Developer",
+    "location": "San Francisco, CA",
+    "joinDate": "March 2022",
+    "website": "https://sarahchen.dev",
+    "bio": "Passionate full-stack developer with 5+ years of experience in React, Node.js, and TypeScript. I love helping others learn and grow in their programming journey.",
+    "avatar": "/api/placeholder/120/120",
+    "stats": {
+        "reputation": 15420,
+        "questions": 47,
+        "answers": 156,
+        "views": 89234,
+        "followers": 234,
+        "following": 89
+    },
+    "badges": [
+        {
+            "name": "React Expert",
+            "type": "gold",
+            "count": 1
+        },
+        {
+            "name": "TypeScript Guru",
+            "type": "silver",
+            "count": 3
+        },
+        {
+            "name": "Helpful Contributor",
+            "type": "bronze",
+            "count": 12
+        }
+    ],
+    "topTags": [
+        {
+            "name": "react",
+            "score": 1247,
+            "posts": 89
+        },
+        {
+            "name": "typescript",
+            "score": 892,
+            "posts": 67
+        },
+        {
+            "name": "javascript",
+            "score": 756,
+            "posts": 54
+        },
+        {
+            "name": "node.js",
+            "score": 543,
+            "posts": 43
+        },
+        {
+            "name": "css",
+            "score": 321,
+            "posts": 28
+        }
+    ],
+    "recentActivity": [
+        {
+            "type": "answer",
+            "title": "How to implement proper error handling in React components?",
+            "points": "+15",
+            "timeAgo": "2 hours ago"
+        },
+        {
+            "type": "question",
+            "title": "Best practices for state management in large React apps",
+            "points": "+8",
+            "timeAgo": "1 day ago"
+        },
+        {
+            "type": "answer",
+            "title": "Understanding JavaScript closures",
+            "points": "+23",
+            "timeAgo": "2 days ago"
+        }
+    ]
+}

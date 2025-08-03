@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "senderId": "1",
+    "senderName": "Sarah Chen",
+    "content": "Hi there! I saw you're interested in my Complete React Developer Course. How can I help you today?",
+    "timestamp": "2025-08-03T17:03:00.000Z",
+    "type": "text",
+    "status": "read"
+  },
+  {
+    "id": "2",
+    "senderId": "me",
+    "senderName": "You",
+    "content": "Hi Sarah! I'm a beginner and wondering if this course is suitable for someone with no React experience?",
+    "timestamp": "2025-08-03T17:05:00.000Z",
+    "type": "text",
+    "status": "read"
+  },
+  {
+    "id": "3",
+    "senderId": "1",
+    "senderName": "Sarah Chen",
+    "content": "Absolutely! The course starts from the very basics. We cover JavaScript fundamentals first, then gradually move to React concepts. You'll build 5 real projects throughout the course.",
+    "timestamp": "2025-08-03T17:08:00.000Z",
+    "type": "text",
+    "status": "read"
+  },
+  {
+    "id": "4",
+    "senderId": "me",
+    "senderName": "You",
+    "content": "That sounds perfect! What kind of support do you provide during the course?",
+    "timestamp": "2025-08-03T17:10:00.000Z",
+    "type": "text",
+    "status": "read"
+  },
+  {
+    "id": "5",
+    "senderId": "1",
+    "senderName": "Sarah Chen",
+    "content": "Great question! You get lifetime access to the course materials, plus I'm available for Q&A sessions twice a week. There's also a private Discord community for students.",
+    "timestamp": "2025-08-03T17:11:00.000Z",
+    "type": "text",
+    "status": "delivered"
+  }
+]

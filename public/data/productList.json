@@ -1,0 +1,174 @@
+{
+    "categories": [
+        {
+            "id": "all",
+            "name": "All Products",
+            "count": 156
+        },
+        {
+            "id": "courses",
+            "name": "Courses",
+            "count": 45
+        },
+        {
+            "id": "ebooks",
+            "name": "E-books",
+            "count": 32
+        },
+        {
+            "id": "templates",
+            "name": "Templates",
+            "count": 28
+        },
+        {
+            "id": "tools",
+            "name": "Tools",
+            "count": 24
+        },
+        {
+            "id": "certifications",
+            "name": "Certifications",
+            "count": 15
+        },
+        {
+            "id": "mentorship",
+            "name": "Mentorship",
+            "count": 12
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "title": "Complete React Developer Course 2024",
+            "description": "Master React from basics to advanced concepts with hands-on projects and real-world applications.",
+            "price": 89.99,
+            "originalPrice": 199.99,
+            "rating": 4.8,
+            "reviews": 2847,
+            "students": 15420,
+            "duration": "42 hours",
+            "level": "Beginner to Advanced",
+            "instructor": "Sarah Chen",
+            "category": "courses",
+            "type": "course",
+            "image": "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "features": [
+                "42 hours of video",
+                "Lifetime access",
+                "Certificate of completion",
+                "30-day money back"
+            ],
+            "bestseller": true
+        },
+        {
+            "id": 2,
+            "title": "JavaScript Algorithms & Data Structures",
+            "description": "Complete guide to algorithms and data structures in JavaScript with coding interview preparation.",
+            "price": 59.99,
+            "originalPrice": 129.99,
+            "rating": 4.9,
+            "reviews": 1923,
+            "students": 8934,
+            "duration": "28 hours",
+            "level": "Intermediate",
+            "instructor": "Michael Rodriguez",
+            "category": "courses",
+            "type": "course",
+            "image": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "features": [
+                "28 hours of video",
+                "Coding exercises",
+                "Interview prep",
+                "Source code included"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Modern CSS Grid & Flexbox Guide",
+            "description": "Master modern CSS layout techniques with practical examples and responsive design patterns.",
+            "price": 29.99,
+            "originalPrice": 79.99,
+            "rating": 4.7,
+            "reviews": 1456,
+            "students": 6789,
+            "duration": "156 pages",
+            "level": "Beginner",
+            "instructor": "Emma Thompson",
+            "category": "ebooks",
+            "type": "ebook",
+            "image": "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "features": [
+                "156 pages",
+                "Code examples",
+                "Responsive designs",
+                "PDF & EPUB formats"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "React Dashboard Template Pro",
+            "description": "Professional React dashboard template with 50+ components and dark/light theme support.",
+            "price": 49.99,
+            "originalPrice": 99.99,
+            "rating": 4.6,
+            "reviews": 892,
+            "students": 3421,
+            "duration": "Instant",
+            "level": "All Levels",
+            "instructor": "Design Team",
+            "category": "templates",
+            "type": "template",
+            "image": "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "features": [
+                "50+ components",
+                "TypeScript support",
+                "Responsive design",
+                "Documentation included"
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Full Stack Developer Certification",
+            "description": "Industry-recognized certification program covering frontend, backend, and database technologies.",
+            "price": 299.99,
+            "originalPrice": 499.99,
+            "rating": 4.9,
+            "reviews": 567,
+            "students": 2134,
+            "duration": "6 months",
+            "level": "Intermediate to Advanced",
+            "instructor": "Certification Board",
+            "category": "certifications",
+            "type": "certification",
+            "image": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "features": [
+                "6-month program",
+                "Industry certification",
+                "Career support",
+                "Portfolio projects"
+            ]
+        },
+        {
+            "id": 6,
+            "title": "1-on-1 Senior Developer Mentorship",
+            "description": "Personal mentorship with experienced senior developers to accelerate your career growth.",
+            "price": 150,
+            "originalPrice": 200,
+            "rating": 5,
+            "reviews": 234,
+            "students": 456,
+            "duration": "1 hour",
+            "level": "All Levels",
+            "instructor": "Various Mentors",
+            "category": "mentorship",
+            "type": "mentorship",
+            "image": "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400",
+            "features": [
+                "1-hour session",
+                "Career guidance",
+                "Code review",
+                "Flexible scheduling"
+            ]
+        }
+    ]
+}

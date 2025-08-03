@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "name": "Sarah Chen (Course Creator)",
+    "avatar": "/api/placeholder/40/40",
+    "lastMessage": "Hi! I'd be happy to help you with the React course.",
+    "timestamp": "2 min ago",
+    "unread": 2,
+    "online": true,
+    "type": "seller"
+  },
+  {
+    "id": "2",
+    "name": "Michael Rodriguez (Mentor)",
+    "avatar": "/api/placeholder/40/40",
+    "lastMessage": "Let's schedule our next mentoring session.",
+    "timestamp": "1 hour ago",
+    "unread": 0,
+    "online": true,
+    "type": "mentor"
+  },
+  {
+    "id": "3",
+    "name": "Emma Thompson (Study Group)",
+    "avatar": "/api/placeholder/40/40",
+    "lastMessage": "The CSS Grid study materials are ready!",
+    "timestamp": "3 hours ago",
+    "unread": 1,
+    "online": false,
+    "type": "student"
+  },
+  {
+    "id": "4",
+    "name": "Design Team (Template Support)",
+    "avatar": "/api/placeholder/40/40",
+    "lastMessage": "Template documentation has been updated.",
+    "timestamp": "1 day ago",
+    "unread": 0,
+    "online": false,
+    "type": "seller"
+  }
+]

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "1",
+    "title": "How to implement proper error handling in React components with TypeScript?",
+    "excerpt": "I'm working on a React application with TypeScript and I'm struggling with implementing proper error boundaries and error handling patterns. What are the best practices for handling errors in React components, especially when dealing with async operations and API calls?",
+    "author": {
+      "name": "Sarah Chen",
+      "avatar": "/api/placeholder/32/32",
+      "reputation": 15420
+    },
+    "votes": 23,
+    "answers": 7,
+    "views": 1547,
+    "tags": ["react", "typescript", "error-handling", "best-practices"],
+    "timeAgo": "2 hours ago",
+    "isAnswered": true
+  },
+  {
+    "id": "2",
+    "title": "Optimizing database queries for large datasets in Node.js applications",
+    "excerpt": "My Node.js application is experiencing performance issues when dealing with large datasets. The database queries are taking too long to execute and causing timeouts. I'm using PostgreSQL with Sequelize ORM. What are some strategies to optimize these queries?",
+    "author": {
+      "name": "Michael Rodriguez",
+      "avatar": "/api/placeholder/32/32",
+      "reputation": 8934
+    },
+    "votes": 45,
+    "answers": 12,
+    "views": 2834,
+    "tags": ["node.js", "postgresql", "performance", "database", "sequelize"],
+    "timeAgo": "4 hours ago",
+    "isAnswered": true,
+    "isBounty": true
+  },
+  {
+    "id": "3",
+    "title": "CSS Grid vs Flexbox: When to use which layout method?",
+    "excerpt": "I'm always confused about when to use CSS Grid versus Flexbox for layouts. Both seem to solve similar problems but I'm not sure about the best practices and when one is preferred over the other.",
+    "author": {
+      "name": "Emma Thompson",
+      "avatar": "/api/placeholder/32/32",
+      "reputation": 5672
+    },
+    "votes": 18,
+    "answers": 9,
+    "views": 3421,
+    "tags": ["css", "flexbox", "css-grid", "layout", "web-design"],
+    "timeAgo": "1 day ago",
+    "isAnswered": true
+  },
+  {
+    "id": "4",
+    "title": "Understanding JavaScript closures and their practical applications",
+    "excerpt": "I've been reading about closures in JavaScript but I'm having trouble understanding how they work in practice. Can someone explain closures with real-world examples and show me where they're commonly used?",
+    "author": {
+      "name": "David Park",
+      "avatar": "/api/placeholder/32/32",
+      "reputation": 3241
+    },
+    "votes": 67,
+    "answers": 15,
+    "views": 5689,
+    "tags": ["javascript", "closures", "fundamentals", "scope"],
+    "timeAgo": "2 days ago",
+    "isAnswered": true
+  },
+  {
+    "id": "5",
+    "title": "Best practices for state management in large React applications",
+    "excerpt": "As my React application grows, managing state becomes increasingly complex. I'm currently using Redux but wondering if there are better alternatives or patterns for managing application state in large-scale apps.",
+    "author": {
+      "name": "Lisa Wang",
+      "avatar": "/api/placeholder/32/32",
+      "reputation": 12087
+    },
+    "votes": 31,
+    "answers": 0,
+    "views": 892,
+    "tags": ["react", "state-management", "redux", "architecture"],
+    "timeAgo": "3 days ago",
+    "isAnswered": false
+  }
+]
