@@ -13,6 +13,9 @@ import ShopPage from './Pages/ShopPage';
 import QuestionDetail from './Pages/QuestionDetail';
 import ChatInterface from './Pages/ChatInterface';
 import StudentProfile from './Pages/StudentProfile';
+import StudentDashboard from './Pages/StudentDashboard';
+import Register from './Pages/Register';
+import Login from './Pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -44,10 +47,22 @@ const router = createBrowserRouter([
         element: <StudentProfile />,
       },
       {
+        path: "/dashboard",
+        element: <StudentDashboard />,
+      },
+      {
         path: "/shop",
         element: <ShopPage />,
       },
     ]
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   }
 ]);
 
