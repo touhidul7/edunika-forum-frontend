@@ -2,6 +2,8 @@ import { useState } from "react";
 import Header from "./Header";
 import { Outlet } from "react-router";
 import Sidebar from "./Sidebar";
+import { Toaster } from "react-hot-toast";
+import ScrollToTop from "../components/ScrollToTop";
 
 
 const MainLayout = () => {
@@ -9,6 +11,7 @@ const MainLayout = () => {
 
   return (
     <>
+     <ScrollToTop/>
       <Header
         onMenuToggle={() => setIsSidebarOpen(!isSidebarOpen)}
         isMenuOpen={isSidebarOpen}
@@ -22,6 +25,7 @@ const MainLayout = () => {
           <Outlet />
         </main>
       </div>
+      <Toaster position='top-center' />
     </>
   );
 };

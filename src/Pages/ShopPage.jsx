@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { 
-  MessageCircle, 
-  Star, 
-  Search, 
-  Grid, 
-  List, 
+import {
+  MessageCircle,
+  Star,
+  Search,
+  Grid,
+  List,
   Heart,
   Award,
   BookOpen,
@@ -15,17 +15,20 @@ import {
   CheckCircle
 } from 'lucide-react';
 import productlist from '../../public/data/productList.json'
+import { useNavigate } from 'react-router';
 
 const ShopPage = () => {
   const [viewMode, setViewMode] = useState('grid'); // Removed TS type
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('popular');
 
+  const navigate = useNavigate();
+
   /* fetch data from json */
   const categories = productlist?.categories;
   const products = productlist?.products;
 
-  const filteredProducts = products.filter(product => 
+  const filteredProducts = products.filter(product =>
     selectedCategory === 'all' || product.category === selectedCategory
   );
 
@@ -40,7 +43,7 @@ const ShopPage = () => {
     }
   };
 
- return (
+  return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* Header */}
       <div className="mb-8">
@@ -105,11 +108,10 @@ const ShopPage = () => {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-colors ${
-                    selectedCategory === category.id
+                  className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-colors ${selectedCategory === category.id
                       ? 'bg-blue-50 text-blue-700 border border-blue-200'
                       : 'hover:bg-gray-50 text-gray-700'
-                  }`}
+                    }`}
                 >
                   <span className="font-medium">{category.name}</span>
                   <span className="text-sm bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
@@ -176,11 +178,10 @@ const ShopPage = () => {
           <div className={viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6' : 'space-y-6'}>
             {filteredProducts.map((product) => {
               const ProductIcon = getProductIcon(product.type);
-              
+
               return (
-                <div key={product.id} className={`bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow ${
-                  viewMode === 'list' ? 'flex' : ''
-                }`}>
+                <div key={product.id} className={`bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow ${viewMode === 'list' ? 'flex' : ''
+                  }`}>
                   {/* Image */}
                   <div className={`relative ${viewMode === 'list' ? 'w-48 flex-shrink-0' : 'aspect-video'}`}>
                     <img
@@ -218,9 +219,9 @@ const ShopPage = () => {
                     {/* Instructor */}
                     <div className="flex items-center mb-3">
                       <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-medium">
-                        {product.instructor.charAt(0)}
+                        {product.instructor?.name?.charAt(0)}
                       </div>
-                      <span className="ml-2 text-sm text-gray-600">{product.instructor}</span>
+                      <span className="ml-2 text-sm text-gray-600">{product?.instructor?.name}</span>
                     </div>
 
                     {/* Rating */}
@@ -260,14 +261,14 @@ const ShopPage = () => {
                     </div>
 
                     {/* Price & Action */}
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col gap-4 items-center justify-between">
                       <div className="flex items-center space-x-2">
                         <span className="text-2xl font-bold text-gray-900">${product.price}</span>
                         {product.originalPrice > product.price && (
                           <span className="text-sm text-gray-500 line-through">${product.originalPrice}</span>
                         )}
                       </div>
-                      <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center">
+                      <button onClick={() => navigate(`/chat/?seller=${product?.instructor?.id}`)} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center">
                         <MessageCircle className="h-4 w-4 mr-2" />
                         Chat with Seller
                       </button>

@@ -1,13 +1,15 @@
 import { BookOpen, Clock, Home, Star, Tag, TrendingUp, Users } from "lucide-react";
+import { Link, useLocation } from "react-router";
 
 
 const Sidebar = ({ isOpen, onClose }) => {
+  const location = useLocation();
   const navigationItems = [
-    { icon: Home, label: 'Home', active: true, count: null },
-    { icon: TrendingUp, label: 'Trending', active: false, count: null },
-    { icon: BookOpen, label: 'Questions', active: false, count: '2.4k' },
-    { icon: Users, label: 'Users', active: false, count: '890' },
-    { icon: Tag, label: 'Tags', active: false, count: null },
+    { icon: Home, label: 'Questions', count: null, url: "/" },
+    { icon: TrendingUp, label: 'Trending', count: null, url: "#" },
+    { icon: BookOpen, label: 'Book Shop', count: '2.4k', url: "/shop" },
+    { icon: Users, label: 'Users', count: '890', url: "#" },
+    { icon: Tag, label: 'Tags', count: null, url: "#" },
   ];
 
   const categories = [
@@ -30,31 +32,29 @@ const Sidebar = ({ isOpen, onClose }) => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
-        <div className="flex flex-col h-full pt-4 lg:pt-6">
+        <div className="flex flex-col lg:min-h-[90vh] pt-4 lg:pt-6">
           {/* Navigation */}
           <nav className="flex-1 px-4 space-y-1">
             {navigationItems.map((item, index) => {
               const Icon = item.icon;
+              const isActive = location.pathname === item.url;
               return (
-                <a
+                <Link
                   key={index}
-                  href="#"
-                  className={`group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-                    item.active
+                  to={item.url}
+                  className={`group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors ${isActive
                       ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-600'
                       : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                  }`}
+                    }`}
                 >
                   <Icon
-                    className={`mr-3 h-5 w-5 ${
-                      item.active
+                    className={`mr-3 h-5 w-5 ${item.active
                         ? 'text-blue-600'
                         : 'text-gray-400 group-hover:text-gray-500'
-                    }`}
+                      }`}
                   />
                   <span className="flex-1">{item.label}</span>
                   {item.count && (
@@ -62,7 +62,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                       {item.count}
                     </span>
                   )}
-                </a>
+                </Link>
               );
             })}
           </nav>

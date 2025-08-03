@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AuthProvider = () => {
+const Loader = () => {
     return (
         <div>
-            
+            Loading...
         </div>
     );
 };
 
-export default AuthProvider;
+export default Loader;

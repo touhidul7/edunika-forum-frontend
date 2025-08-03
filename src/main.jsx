@@ -16,6 +16,7 @@ import StudentProfile from './Pages/StudentProfile';
 import StudentDashboard from './Pages/StudentDashboard';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
+import PrivateRoute from './Auth/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -24,12 +25,22 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/forum",
         element: <ForumPage />,
       },
+      {
+        path: "/questions",
+        element: <ForumPage />,
+      },
+      {
+        path: "/shop",
+        element: <ShopPage />,
+      },
+    ]
+  },
+  {
+    path: "",
+    element: <PrivateRoute><MainLayout /></PrivateRoute>,
+    children: [
       {
         path: "/ask-question",
         element: <AskQuestion />,
@@ -39,7 +50,7 @@ const router = createBrowserRouter([
         element: <QuestionDetail />,
       },
       {
-        path: "/chat",
+        path: "/chat/",
         element: <ChatInterface />,
       },
       {
@@ -49,10 +60,6 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <StudentDashboard />,
-      },
-      {
-        path: "/shop",
-        element: <ShopPage />,
       },
     ]
   },

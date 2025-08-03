@@ -2,17 +2,29 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, Paperclip, Smile, Phone, Video, MoreVertical, Search } from 'lucide-react';
 import messages from '../../public/data/Chating/messages.json'
 import chats from '../../public/data/Chating/chats.json'
+import { useLocation } from 'react-router';
+import ScrollToTop from '../components/ScrollToTop';
 
 const ChatInterface = () => {
   const [selectedChat, setSelectedChat] = useState('1');
   const [message, setMessage] = useState('');
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const messagesEndRef = useRef(null);
+  // const [selectedChatData, setSelectedChatData] = useState([]);
 
-  
+  // const { sellerid } = useParams();
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const sellerid = queryParams.get('seller');
+
+  useEffect(() => {
+    console.log(sellerid)
+    sellerid && (setSelectedChat(sellerid));
+  }, [sellerid]);
 
 
-  const selectedChatData = chats.find(chat => chat.id === selectedChat);
+  const selectedChatData = chats.find(chat => chat.seller_id === selectedChat);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -30,7 +42,7 @@ const ChatInterface = () => {
     }
   };
 
- 
+
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -61,10 +73,9 @@ const ChatInterface = () => {
               {chats.map((chat) => (
                 <div
                   key={chat.id}
-                  onClick={() => setSelectedChat(chat.id)}
-                  className={`p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 transition-colors ${
-                    selectedChat === chat.id ? 'bg-blue-50 border-blue-200' : ''
-                  }`}
+                  onClick={() => setSelectedChat(chat.seller_id)}
+                  className={`p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 transition-colors ${selectedChat === chat.id ? 'bg-blue-50 border-blue-200' : ''
+                    }`}
                 >
                   <div className="flex items-center space-x-3">
                     <div className="relative">
@@ -84,11 +95,10 @@ const ChatInterface = () => {
                       </div>
                       <p className="text-sm text-gray-600 truncate">{chat.lastMessage}</p>
                       <div className="flex items-center justify-between mt-1">
-                        <span className={`text-xs px-2 py-0.5 rounded-full ${
-                          chat.type === 'seller' ? 'bg-blue-100 text-blue-800' :
+                        <span className={`text-xs px-2 py-0.5 rounded-full ${chat.type === 'seller' ? 'bg-blue-100 text-blue-800' :
                           chat.type === 'mentor' ? 'bg-purple-100 text-purple-800' :
-                          'bg-green-100 text-green-800'
-                        }`}>
+                            'bg-green-100 text-green-800'
+                          }`}>
                           {chat.type}
                         </span>
                         {chat.unread > 0 && (
@@ -147,16 +157,14 @@ const ChatInterface = () => {
                       className={`flex ${msg.senderId === 'me' ? 'justify-end' : 'justify-start'}`}
                     >
                       <div className={`max-w-xs lg:max-w-md ${msg.senderId === 'me' ? 'order-2' : 'order-1'}`}>
-                        <div className={`px-4 py-2 rounded-2xl ${
-                          msg.senderId === 'me'
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-gray-100 text-gray-900'
-                        }`}>
+                        <div className={`px-4 py-2 rounded-2xl ${msg.senderId === 'me'
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-gray-100 text-gray-900'
+                          }`}>
                           <p className="text-sm">{msg.content}</p>
                         </div>
-                        <div className={`text-xs text-gray-500 mt-1 ${
-                          msg.senderId === 'me' ? 'text-right' : 'text-left'
-                        }`}>
+                        <div className={`text-xs text-gray-500 mt-1 ${msg.senderId === 'me' ? 'text-right' : 'text-left'
+                          }`}>
                           {msg?.timestamp}
                           {msg.senderId === 'me' && (
                             <span className="ml-1">
@@ -223,7 +231,7 @@ const ChatInterface = () => {
                   <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Send className="h-8 w-8 text-gray-400" />
                   </div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">Select a conversation</h3>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">{sellerid?"Seller Not Available":"Select a conversation"}</h3>
                   <p className="text-gray-500">Choose a chat from the sidebar to start messaging</p>
                 </div>
               </div>

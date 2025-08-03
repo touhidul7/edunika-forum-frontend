@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Mail, Lock, User, Eye, EyeOff, MessageSquare, ArrowRight, Github, ToggleLeft as Google, Check } from 'lucide-react';
+import { Link, useNavigate } from 'react-router';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +15,22 @@ const Register = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const AuthEmail = "user@gmail.com";
+    const AuthPassword = "user";
+
+  const navigate = useNavigate();
+
+      useEffect(() => {
+        const saveduser = JSON.parse(localStorage.getItem("user") || "null");
+        if (saveduser) {
+            if (AuthEmail == saveduser.email) {
+                navigate("/dashboard");
+                toast.success("Log In Success")
+            } else {
+                localStorage.removeItem('user');
+            }
+        }
+    },);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -49,7 +67,7 @@ const Register = () => {
           <div className="flex items-center justify-center mb-4">
             <MessageSquare className="h-12 w-12 text-blue-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900">Join Scisco</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Join Edunika</h1>
           <p className="text-gray-600 mt-2">Create your account and start learning</p>
         </div>
 
@@ -269,16 +287,16 @@ const Register = () => {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
               Already have an account?{' '}
-              <a href="#" className="font-medium text-blue-600 hover:text-blue-700">
+              <Link to="/login" className="font-medium text-blue-600 hover:text-blue-700">
                 Sign in here
-              </a>
+              </Link>
             </p>
           </div>
         </div>
 
         {/* Benefits */}
         <div className="mt-8 bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Why join Scisco?</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Why join Edunika?</h3>
           <div className="space-y-3">
             {[
               'Ask questions and get expert answers',
@@ -294,6 +312,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+      <Toaster position='top-center'/>
     </div>
   );
 };
