@@ -1,36 +1,53 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { Mail, Lock, User, Eye, EyeOff, MessageSquare, ArrowRight, Github, ToggleLeft as Google, Check } from 'lucide-react';
+import { Mail, Lock, User, Eye, EyeOff, MessageSquare, ArrowRight, Github, ToggleLeft as Google, Check, School, LayoutPanelTop, Shapes } from 'lucide-react';
 import { Link, useNavigate } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
+import axios from 'axios';
 
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    class: '',
+    group: '',
+    institute_type: '',
     email: '',
     password: '',
     confirmPassword: ''
   });
+
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [classData, setClassData] = useState([]);
+  const VITE_SERVER_API = import.meta.env.VITE_SERVER_API;
   const AuthEmail = "user@gmail.com";
-    const AuthPassword = "user";
+  const AuthPassword = "user";
 
   const navigate = useNavigate();
 
-      useEffect(() => {
-        const saveduser = JSON.parse(localStorage.getItem("user") || "null");
-        if (saveduser) {
-            if (AuthEmail == saveduser.email) {
-                navigate("/dashboard");
-                toast.success("Log In Success")
-            } else {
-                localStorage.removeItem('user');
-            }
-        }
-    },);
+  const fetchcategory = () => {
+    axios.get(`${VITE_SERVER_API}/category`)
+      .then(res => setClassData(res.data))
+      .catch(error => console.error(error));
+  }
+
+  useEffect(() => {
+    fetchcategory();
+    const saveduser = JSON.parse(localStorage.getItem("user") || "null");
+    if (saveduser) {
+      if (AuthEmail == saveduser.email) {
+        navigate("/dashboard");
+        toast.success("Log In Success")
+      } else {
+        localStorage.removeItem('user');
+      }
+    }
+  }, []);
+
 
   const handleInputChange = (e) => {
     setFormData({
@@ -42,7 +59,28 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate registration
+    const registerPayload = {
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      email: formData.email,
+      category: formData.class.name,
+      sub_category: formData.group,
+      institute_type: formData.institute_type,
+      password: formData.password
+    };
+    const request = axios.post(`${VITE_SERVER_API}/register`, registerPayload);
+
+    toast.promise(request, {
+      loading: 'Registering...',
+      success: 'Success!',
+      error: 'Something went wrong!',
+    });
+
+    request.then(() => {
+      navigate("/login");
+    }).catch((error) => {
+      console.error(error);
+    });
     setTimeout(() => setIsLoading(false), 1500);
   };
 
@@ -58,6 +96,8 @@ const Register = () => {
   const strength = passwordStrength(formData.password);
   const strengthLabels = ['Weak', 'Fair', 'Good', 'Strong'];
   const strengthColors = ['bg-red-500', 'bg-yellow-500', 'bg-blue-500', 'bg-green-500'];
+
+  const selectedClass = classData?.find(item => item.id === parseInt(formData?.class));
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 flex items-center justify-center px-4 py-8">
@@ -110,6 +150,74 @@ const Register = () => {
                   placeholder="Doe"
                   required
                 />
+              </div>
+            </div>
+            {/* Type of Institute */}
+            <div>
+              <label htmlFor="institute_type" className="block text-sm font-medium text-gray-700 mb-2">
+                Institute type
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <School className="h-5 w-5 text-gray-400" />
+                </div>
+                <select className='className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all' required name="institute_type" id="institute_type" value={formData.institute_type} onChange={handleInputChange}>
+                  <option value="">Institute Type</option>
+                  <option value="generale">Generale</option>
+                  <option value="vocational">Vocational</option>
+                  <option value="madrasha">Madrasha</option>
+                </select>
+              </div>
+            </div>
+            {/* Category and sub Category */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="class" className="block text-sm font-medium text-gray-700 mb-2">
+                  Class
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <LayoutPanelTop className="h-5 w-5 text-gray-400" />
+                  </div>
+                  <select
+                    className='className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all'
+                    required
+                    name="class"
+                    id="class"
+                    value={formData.class}
+                    onChange={handleInputChange}
+                  >
+                    <option value="">Select Class</option>
+                    {classData?.map((item) => (
+                      <option key={item.id} value={item.id}>{item.name}</option>
+                    ))}
+                  </select>
+
+                </div>
+              </div>
+              <div >
+                <label htmlFor="class" className="block text-sm font-medium text-gray-700 mb-2">
+                  Group
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Shapes className="h-5 w-5 text-gray-400" />
+                  </div>
+                  <select
+                    className='className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all'
+                    required
+                    name="group"
+                    id="group"
+                    value={formData.group}
+                    onChange={handleInputChange}
+                  >
+                    <option value="">Select Group</option>
+                    {selectedClass?.subcategories?.map((item) => (
+                      <option key={item.id} value={item.name}>{item.name}</option>
+                    ))}
+                  </select>
+
+                </div>
               </div>
             </div>
 
@@ -172,7 +280,7 @@ const Register = () => {
                 <div className="mt-2">
                   <div className="flex items-center space-x-2">
                     <div className="flex-1 bg-gray-200 rounded-full h-2">
-                      <div 
+                      <div
                         className={`h-2 rounded-full transition-all duration-300 ${strengthColors[strength - 1] || 'bg-gray-300'}`}
                         style={{ width: `${(strength / 4) * 100}%` }}
                       />
@@ -312,7 +420,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <Toaster position='top-center'/>
+      <Toaster position='top-center' />
     </div>
   );
 };
