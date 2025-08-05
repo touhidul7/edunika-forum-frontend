@@ -68,7 +68,7 @@ const Register = () => {
       institute_type: formData.institute_type,
       password: formData.password
     };
-    const request = axios.post(`${VITE_SERVER_API}/user-entry`, registerPayload);
+    const request = axios.post(`${VITE_SERVER_API}/register`, registerPayload);
 
     toast.promise(request, {
       loading: 'Registering...',

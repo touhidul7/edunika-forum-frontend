@@ -68,7 +68,7 @@ const Register = () => {
       institute_type: formData.institute_type,
       password: formData.password
     };
-    const request = axios.post(`${VITE_SERVER_API}/user-entry`, registerPayload);
+    const request = axios.post(`${VITE_SERVER_API}/register`, registerPayload);
 
     toast.promise(request, {
       loading: 'Registering...',
@@ -163,7 +163,7 @@ const Register = () => {
                 </div>
                 <select className='className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all' required name="institute_type" id="institute_type" value={formData.institute_type} onChange={handleInputChange}>
                   <option value="">Institute Type</option>
-                  <option value="general">General</option>
+                  <option value="generale">Generale</option>
                   <option value="vocational">Vocational</option>
                   <option value="madrasha">Madrasha</option>
                 </select>
