@@ -1,39 +1,18 @@
-import PropTypes from 'prop-types';
 import { Navigate, useLocation } from 'react-router';
 import Loader from '../components/Loader';
+import { useAuth } from './context/AuthContext';
 
 const PrivateRoute = ({ children }) => {
     const location = useLocation();
-    const user = JSON.parse(localStorage.getItem("user") || "null");
-    // const user = {
-    //     username: "user",
-    //     password: "user"
-    // }
-    const AuthEmail = "user@gmail.com";
-    const AuthPassword = "user";
-    const loading = false;
-    if (loading) {
-        return (
-            <Loader />
-        );
-    }
+    const { user, loading } = useAuth();
 
-    // Ensure user exists and has an email property before rendering children
-    if (user) {
-        if (AuthEmail == user.email /* AuthPassword == user.password */) {
+    if (loading) return <Loader />;
 
-            return children;
-        } else {
-            return <Navigate to="/login" state={{ from: location }} replace />;
-        }
-    } else {
+    if (!user) {
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
 
-};
-
-PrivateRoute.propTypes = {
-    children: PropTypes.node.isRequired,
+    return children;
 };
 
 export default PrivateRoute;

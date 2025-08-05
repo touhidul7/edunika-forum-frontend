@@ -63,23 +63,25 @@ const Register = () => {
       first_name: formData.firstName,
       last_name: formData.lastName,
       email: formData.email,
-      category: formData.class.name,
-      sub_category: formData.group,
+      category_id: formData?.class,
+      sub_category_id: formData.group,
       institute_type: formData.institute_type,
       password: formData.password
     };
-    const request = axios.post(`${VITE_SERVER_API}/register`, registerPayload);
+    // console.log(registerPayload);
+    const request = axios.post(`${VITE_SERVER_API}/user-entry`, registerPayload);
 
     toast.promise(request, {
       loading: 'Registering...',
       success: 'Success!',
-      error: 'Something went wrong!',
+      // error: 'Something went wrong!',
     });
 
     request.then(() => {
       navigate("/login");
     }).catch((error) => {
-      console.error(error);
+      // console.error(error);
+      toast.error(error.response.data.message);
     });
     setTimeout(() => setIsLoading(false), 1500);
   };
@@ -189,7 +191,7 @@ const Register = () => {
                   >
                     <option value="">Select Class</option>
                     {classData?.map((item) => (
-                      <option key={item.id} value={item.id}>{item.name}</option>
+                      <option key={item.id} value={item?.id}>{item.name}</option>
                     ))}
                   </select>
 
@@ -213,7 +215,7 @@ const Register = () => {
                   >
                     <option value="">Select Group</option>
                     {selectedClass?.subcategories?.map((item) => (
-                      <option key={item.id} value={item.name}>{item.name}</option>
+                      <option key={item.id} value={item.id}>{item.name}</option>
                     ))}
                   </select>
 

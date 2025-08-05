@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Mail, Lock, Eye, EyeOff, MessageSquare, ArrowRight, Github, ToggleLeft as Google } from 'lucide-react';
 import { Link, useNavigate } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
+import { useAuth } from '../Auth/context/AuthContext';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -11,43 +12,25 @@ const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
     const AuthEmail = "user@gmail.com";
     const AuthPassword = "user";
+    const { login } = useAuth()
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const saveduser = JSON.parse(localStorage.getItem("user") || "null");
-        if (saveduser) {
-            if (AuthEmail == saveduser.email) {
-                navigate("/dashboard");
-                toast.success("Log In Success")
-            } else {
-                localStorage.removeItem('user');
-            }
-        }
-    },);
+
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
-
-        const loginPayload = {
-            email: email,
-            password: password,
-        };
-
         setIsLoading(true);
 
-        localStorage.setItem("user", JSON.stringify(loginPayload));
+        const res = await login(email, password);
+        setIsLoading(false);
 
-        setTimeout(() => setIsLoading(false), 1500);
-
-        if (AuthEmail == loginPayload.email) {
-            localStorage.setItem("user", JSON.stringify(loginPayload));
+        if (res.success) {
+            toast.success("Login successful!");
             navigate("/dashboard");
         } else {
-            toast.error("Invalid Credentials")
+            toast.error(res.message || "Login failed!");
         }
-
     };
 
     return (
